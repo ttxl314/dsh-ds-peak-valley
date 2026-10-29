@@ -1,0 +1,11 @@
+# Bundle patch for @ttxl314/dsh-ds-peak-valley, applied when a profile lists
+# this package in dsh.profile.bundles. The row references the package by its
+# npm name, so the loader resolves it from the profile's node_modules (or from
+# the `link:` target declared in the profile).
+#
+# This is a browser-only plugin: the host entry (lib/index.js) is a deliberate
+# no-op that keeps the package a loader entry, which dsh-client-modules scans
+# for the dsh.client declaration and serves lib/client.js from.
+- insert:
+    - id: ds-peak-valley
+      name: '@ttxl314/dsh-ds-peak-valley'

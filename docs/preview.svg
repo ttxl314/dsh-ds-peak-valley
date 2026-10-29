@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="132" viewBox="0 0 560 132" role="img" aria-labelledby="badge-title badge-desc">
+  <title id="badge-title">dsh-ds-peak-valley badge preview</title>
+  <desc id="badge-desc">Two states of the composer dock badge: 文峰 in red with a countdown to 文谷, and 文谷 in blue with a countdown to 文峰.</desc>
+  <rect width="560" height="132" fill="#ffffff"/>
+
+  <!-- 文峰 (peak) -->
+  <rect x="24" y="26" width="292" height="30" rx="15" fill="#e5484d" fill-opacity="0.15"/>
+  <text x="42" y="46" font-family="'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="15" font-weight="600" fill="#e5484d">文峰 14:26 · <tspan font-size="11">距下谷 3小时34分</tspan></text>
+  <text x="332" y="45" font-family="'Segoe UI',sans-serif" font-size="12" fill="#9ca3af">peak</text>
+
+  <!-- 文谷 (off-peak) -->
+  <rect x="24" y="76" width="292" height="30" rx="15" fill="#0091ff" fill-opacity="0.15"/>
+  <text x="42" y="96" font-family="'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="15" font-weight="600" fill="#0091ff">文谷 22:41 · <tspan font-size="11">距下峰 10小时19分</tspan></text>
+  <text x="332" y="95" font-family="'Segoe UI',sans-serif" font-size="12" fill="#9ca3af">off-peak</text>
+
+  <text x="24" y="124" font-family="'Segoe UI',sans-serif" font-size="11" fill="#9ca3af">Vector mock of the badge, as rendered in the composer dock next to the session stats line.</text>
+</svg>

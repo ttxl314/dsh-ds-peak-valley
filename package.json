@@ -1,0 +1,62 @@
+{
+  "name": "@ttxl314/dsh-ds-peak-valley",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness client plugin: a persistent peak/off-peak (文峰/文谷) badge in the composer dock, computed locally from the DeepSeek pricing schedule",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "docs/preview.svg",
+    "test/self-test.mjs"
+  ],
+  "scripts": {
+    "test": "node test/self-test.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "client-plugin",
+    "deepseek",
+    "pricing",
+    "peak-valley",
+    "off-peak"
+  ],
+  "author": "ttxl314",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttxl314/dsh-ds-peak-valley.git"
+  },
+  "homepage": "https://github.com/ttxl314/dsh-ds-peak-valley#readme",
+  "bugs": {
+    "url": "https://github.com/ttxl314/dsh-ds-peak-valley/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web"
+    }
+  }
+}
