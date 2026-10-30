@@ -24,12 +24,18 @@ function check(label, ok, detail) {
  * Load the bundle exactly the way the client runtime does.
  * ------------------------------------------------------------------ */
 
+const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
 const code = readFileSync(join(root, "lib/client.js"), "utf8");
 
 let captured = null;
 const fakeWindow = { __ModuleLoader__: { load: (reg) => { captured = reg; } } };
 new Function("window", code)(fakeWindow);
 check("client bundle registers via __ModuleLoader__.load", captured !== null);
+check(
+  "bundle registers under the package name",
+  captured !== null && captured.id === pkg.name,
+  `registered as ${captured?.id}, package is ${pkg.name}`
+);
 
 const noop = () => {};
 const react = {
@@ -173,7 +179,6 @@ check(
  * Packaging consistency: the bundle patch must name the package exactly.
  * ------------------------------------------------------------------ */
 
-const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
 const patch = readFileSync(join(root, "cordis.patch.yml"), "utf8");
 const patchName = /name:\s*'([^']+)'/.exec(patch)?.[1];
 
