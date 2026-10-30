@@ -85,6 +85,8 @@ cordis.patch.yml  bundle patch —— 把插件行插入 profile 的插件树
 - `nextTransition(date)` → `{ kind, minutes }`，下一次 峰↔谷 边界及剩余分钟数
   （周末是连续文谷，故下一次切换是周一 09:00）。
 - 时区硬编码为 `Asia/Shanghai`：定价时段以北京时间为准，与机器本地时区无关。
+- 浏览器 bundle 以 `window.__ModuleLoader__.load({ id })` 注册，`id` 必须与 `package.json` 的包名
+  完全一致：宿主按包名组装 boot graph，id 不一致时这一行永远不会被满足（徽标静默不出现）。
 
 ## 隐私
 

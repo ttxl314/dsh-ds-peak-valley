@@ -88,6 +88,9 @@ cordis.patch.yml  bundle patch — inserts the plugin row into the profile tree
   (weekends collapse into one long valley, so the next change is Monday 09:00).
 - The timezone is hard-coded to `Asia/Shanghai` because the pricing schedule is defined in
   Beijing time; the machine's own timezone is irrelevant.
+- The bundle registers with `window.__ModuleLoader__.load({ id })` and that `id` must equal the
+  package name: the host composes the browser boot graph per package name, so a bundle that
+  registers under any other id silently never mounts.
 
 ## Privacy
 
