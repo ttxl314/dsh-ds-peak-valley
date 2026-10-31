@@ -1,6 +1,6 @@
 {
   "name": "@ttxl314/dsh-ds-peak-valley",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek Harness client plugin: a persistent peak/off-peak (文峰/文谷) badge in the composer dock, computed locally from the DeepSeek pricing schedule",
   "type": "module",
   "main": "lib/index.js",
@@ -16,6 +16,7 @@
     "README.md",
     "README.zh-CN.md",
     "LICENSE",
+    "CHANGELOG.md",
     "docs/preview.svg",
     "test/self-test.mjs"
   ],

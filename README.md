@@ -117,7 +117,7 @@ CI runs the same suite on Node 18/20/22 (see `.github/workflows/test.yml`).
 
 Written against the DSH client plugin API: the `conversation.composer.dock` slot,
 the `react` seed module and `window.__ModuleLoader__` with `dsh.client.platform = "web"`.
-Tested on DSH desktop and web profiles. If a future DSH release renames the slot or the
+Verified against DSH 0.2.1-rc.5 on both the desktop and the web profile. If a future DSH release renames the slot or the
 loader entry point, only `lib/client.js` needs adjusting.
 
 ## Troubleshooting
@@ -127,6 +127,13 @@ loader entry point, only `lib/client.js` needs adjusting.
   that the `link:` target still exists after moving the checkout.
 - **Wrong state** — the plugin trusts the local clock. Make sure the system time is
   synchronized, then check the hover tooltip, which prints the computed Beijing timestamp.
+- **Badge missing after renaming the package** — the bundle registers under the package name,
+  so a rename must update `package.json`, `cordis.patch.yml` and the `id` inside
+  `lib/client.js` together; `npm test` fails until they agree.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for the release history.
 
 ## License
 

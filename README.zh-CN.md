@@ -112,7 +112,7 @@ CI 在 Node 18/20/22 上跑同一套测试（见 `.github/workflows/test.yml`）
 
 面向 DSH 客户端插件 API 编写：`conversation.composer.dock` 槽位、`react` seed 模块、
 以及 `dsh.client.platform = "web"` 下的 `window.__ModuleLoader__`。
-已在 DSH 桌面版与 Web profile 上验证。如果未来 DSH 改动槽位名或 loader 入口，
+已在 DSH 0.2.1-rc.5 的桌面版与 Web profile 上验证。如果未来 DSH 改动槽位名或 loader 入口，
 只需调整 `lib/client.js`。
 
 ## 常见问题
@@ -120,6 +120,11 @@ CI 在 Node 18/20/22 上跑同一套测试（见 `.github/workflows/test.yml`）
 - **看不到徽标** —— 检查 `dependencies` 里的包名是否与 `@ttxl314/dsh-ds-peak-valley`
   完全一致、是否已加入 `dsh.profile.bundles`，以及克隆目录移动后 `link:` 路径是否失效。
 - **状态不对** —— 插件信任本地时钟。请先同步系统时间，再看悬停提示里打印的北京时间。
+- **改包名后徽标消失** —— bundle 以包名注册，重命名时必须同时改 `package.json`、`cordis.patch.yml` 和 `lib/client.js` 里的 `id`；三者不一致时 `npm test` 会直接失败。
+
+## 更新日志
+
+发布历史见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 许可证
 
