@@ -26,6 +26,7 @@ state  Beijing   next switch  time left
 
 - `距下谷` (blue) — the schedule is about to drop into 文谷 at 12:00 / 18:00.
 - `距下峰` (red) — the schedule is about to enter 文峰 at 09:00 / 14:00.
+- Countdowns of 24 hours or more switch to days: `距下峰 2天15小时`, not `63小时` (weekend breaks are long).
 - Hovering the badge reveals the full window description and the exact Beijing timestamp.
 
 The windows follow the footnote of the official pricing page:
@@ -108,7 +109,7 @@ The self-test loads `lib/client.js` against a stub `window.__ModuleLoader__` and
 
 - status boundaries (09:00 / 12:00 / 14:00 / 18:00, weekends),
 - the next-transition countdown (including Fri 18:00 → Mon 09:00),
-- the compact `h小时m分` countdown formatting,
+- the compact countdown formatting (`45分`, `2小时30分`, `2天15小时`),
 - a render smoke test of the badge for both states.
 
 CI runs the same suite on Node 18/20/22 (see `.github/workflows/test.yml`).
