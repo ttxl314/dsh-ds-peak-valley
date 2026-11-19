@@ -4,6 +4,16 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] — 2026-11-19
+
+### Docs
+
+- Install guide rewritten around the published npm package: the plugin manager
+  (**Plugins → Add plugin**), the equivalent `dsh plugin add` command, a local-checkout
+  path for development, and verify / update / uninstall sections.
+- npm and CI badges plus a one-line install hint at the top of both READMEs.
+- No code changes: `lib/`, `cordis.patch.yml` and the self-test are identical to 0.1.2.
+
 ## [0.1.2] — 2026-11-07
 
 ### Changed
@@ -49,6 +59,7 @@ and the project adheres to [Semantic Versioning](https://semver.org/).
   (peak: Mon–Fri 09:00–12:00 and 14:00–18:00), with a countdown to the next switch.
 - Bilingual README, badge preview, MIT license, and a CI matrix on Node 18/20/22.
 
+[0.1.3]: https://github.com/ttxl314/dsh-ds-peak-valley/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/ttxl314/dsh-ds-peak-valley/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/ttxl314/dsh-ds-peak-valley/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/ttxl314/dsh-ds-peak-valley/releases/tag/v0.1.0

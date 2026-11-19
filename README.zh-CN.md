@@ -47,15 +47,15 @@
 DSH 侧边栏 → **插件** → **添加插件**，粘贴：
 
 ```text
-@ttxl314/dsh-ds-peak-valley@0.1.2
+@ttxl314/dsh-ds-peak-valley
 ```
 
-去掉 `@0.1.2` 就是装最新版，留着则锁定版本。管理器会从 npm 解析、装进当前 profile 并启用。
+不写版本号就是装最新版，写 `@<版本>`（如 `@0.1.3`）则锁定版本。管理器会从 npm 解析、装进当前 profile 并启用。
 
 等价命令行：
 
 ```sh
-dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley@0.1.2
+dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley
 ```
 
 刷新页面（或重启 DSH），徽标就会出现在统计行旁边。
@@ -69,7 +69,7 @@ dsh plugin --profile web add link:<本地克隆路径>
 ```
 
 插件管理器的「添加插件」输入框也直接接受该绝对路径，另外还支持 `npm pack` 出的 `.tgz`
-和 Git 地址，例如 `https://github.com/ttxl314/dsh-ds-peak-valley#v0.1.2`。
+和 Git 地址，例如 `https://github.com/ttxl314/dsh-ds-peak-valley#v0.1.3`。
 
 ### 验证装好了
 

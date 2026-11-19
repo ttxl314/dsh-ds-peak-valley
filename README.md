@@ -49,17 +49,17 @@ so no checkout is needed.
 Open **Plugins** in the DSH sidebar → **Add plugin**, then paste:
 
 ```text
-@ttxl314/dsh-ds-peak-valley@0.1.2
+@ttxl314/dsh-ds-peak-valley
 ```
 
-Drop the `@0.1.2` to take the newest release, or keep it to pin a version. The manager
+Append `@<version>` (e.g. `@0.1.3`) to pin a release; without it you get the newest. The manager
 resolves the package from the npm registry, installs it into the current profile and
 enables it.
 
 The same operation from a terminal:
 
 ```sh
-dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley@0.1.2
+dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley
 ```
 
 Reload the page (or restart DSH) and the badge appears beside the stats line.
@@ -74,7 +74,7 @@ dsh plugin --profile web add link:<path-to-clone>
 
 The **Add plugin** box in the plugin manager also accepts that absolute path directly, plus
 `npm pack` tarballs (`.tgz`) and Git specs such as
-`https://github.com/ttxl314/dsh-ds-peak-valley#v0.1.2`.
+`https://github.com/ttxl314/dsh-ds-peak-valley#v0.1.3`.
 
 ### Verify
 
