@@ -1,9 +1,15 @@
 # @ttxl314/dsh-ds-peak-valley
 
+[![npm](https://img.shields.io/npm/v/@ttxl314/dsh-ds-peak-valley?color=0091ff)](https://www.npmjs.com/package/@ttxl314/dsh-ds-peak-valley)
+[![test](https://github.com/ttxl314/dsh-ds-peak-valley/actions/workflows/test.yml/badge.svg)](https://github.com/ttxl314/dsh-ds-peak-valley/actions/workflows/test.yml)
+
 [English](README.md) | 中文
 
 一个极简的 **DeepSeek Harness (DSH) 客户端插件**：在对话底部的统计行
 （`1 轮 · 68 步 | LLM ...`）旁边常驻一枚「文峰 / 文谷」徽标，并跟随北京时间自动切换。
+
+> **安装：** 在**插件 → 添加插件**里粘贴 `@ttxl314/dsh-ds-peak-valley`，或执行
+> `dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley`。详见[安装](#安装)。
 
 ![徽标预览](docs/preview.svg)
 
@@ -32,9 +38,29 @@
 
 ## 安装
 
-前置条件：已安装 DSH（`web` 或 `desktop` profile 均可），Node.js ≥ 18。
+前置条件：已安装 DSH（`web` 或 `desktop` profile 均可）。插件已发布到 npm：
+[`@ttxl314/dsh-ds-peak-valley`](https://www.npmjs.com/package/@ttxl314/dsh-ds-peak-valley)，
+不需要先克隆仓库。
 
-克隆仓库后，把它作为树外 bundle 注册到目标 profile：
+### 方式一：插件管理器（推荐）
+
+DSH 侧边栏 → **插件** → **添加插件**，粘贴：
+
+```text
+@ttxl314/dsh-ds-peak-valley@0.1.2
+```
+
+去掉 `@0.1.2` 就是装最新版，留着则锁定版本。管理器会从 npm 解析、装进当前 profile 并启用。
+
+等价命令行：
+
+```sh
+dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley@0.1.2
+```
+
+刷新页面（或重启 DSH），徽标就会出现在统计行旁边。
+
+### 方式二：本地源码（开发用）
 
 ```sh
 git clone https://github.com/ttxl314/dsh-ds-peak-valley.git
@@ -42,28 +68,28 @@ git clone https://github.com/ttxl314/dsh-ds-peak-valley.git
 dsh plugin --profile web add link:<本地克隆路径>
 ```
 
-也可以直接编辑 profile 清单（通常是 `$DSH_HOME/profiles/web/package.json`）：
+插件管理器的「添加插件」输入框也直接接受该绝对路径，另外还支持 `npm pack` 出的 `.tgz`
+和 Git 地址，例如 `https://github.com/ttxl314/dsh-ds-peak-valley#v0.1.2`。
 
-```json
-{
-  "dependencies": {
-    "@ttxl314/dsh-ds-peak-valley": "link:<本地克隆路径>"
-  },
-  "dsh": {
-    "profile": {
-      "bundles": [
-        "@deepseek-ai/dsh-base",
-        "@deepseek-ai/dsh-web-app",
-        "@ttxl314/dsh-ds-peak-valley"
-      ]
-    }
-  }
-}
+### 验证装好了
+
+- 「插件」页里能看到该组合包已启用，并有一行 `ds-peak-valley`。
+- 对话底部统计行 `1 轮 · 68 步 | LLM ...` 旁边出现 `文峰 14:26 · 距下谷 3小时34分`（或 `文谷 …`）。
+- 在包目录跑 `node test/self-test.mjs`，应输出 `OK — 36 schedule cases`。
+
+### 升级
+
+```sh
+dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley@latest
 ```
 
-重启 DSH 后，徽标就会出现在对话底部的 composer dock 中，与统计行并排。
+### 卸载
 
-卸载：从 `dependencies` 和 `dsh.profile.bundles` 中同时移除该包即可。
+```sh
+dsh plugin --profile web remove @ttxl314/dsh-ds-peak-valley
+```
+
+用桌面版 profile 的话，把上面命令里的 `--profile web` 换成 `--profile desktop`。
 
 ## 行为说明
 

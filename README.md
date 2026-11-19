@@ -1,10 +1,16 @@
 # @ttxl314/dsh-ds-peak-valley
 
+[![npm](https://img.shields.io/npm/v/@ttxl314/dsh-ds-peak-valley?color=0091ff)](https://www.npmjs.com/package/@ttxl314/dsh-ds-peak-valley)
+[![test](https://github.com/ttxl314/dsh-ds-peak-valley/actions/workflows/test.yml/badge.svg)](https://github.com/ttxl314/dsh-ds-peak-valley/actions/workflows/test.yml)
+
 English | [中文](README.zh-CN.md)
 
 A tiny client-only plugin for **DeepSeek Harness (DSH)**: it pins a peak / off-peak badge
 (`文峰` / `文谷`) next to the session stats line at the bottom of the conversation
 (`1 轮 · 68 步 | LLM ...`), and keeps it in sync with Beijing time.
+
+> **Install:** paste `@ttxl314/dsh-ds-peak-valley` into **Plugins → Add plugin**, or run
+> `dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley`. Details in [Install](#install).
 
 ![badge preview](docs/preview.svg)
 
@@ -34,9 +40,31 @@ The windows follow the footnote of the official pricing page:
 
 ## Install
 
-Requirements: a DSH installation with a `web` or `desktop` profile, Node.js ≥ 18.
+Requirements: DSH with a `web` or `desktop` profile. The plugin is published on npm as
+[`@ttxl314/dsh-ds-peak-valley`](https://www.npmjs.com/package/@ttxl314/dsh-ds-peak-valley),
+so no checkout is needed.
 
-Clone the repository, then register it as a tree-outside bundle of the target profile:
+### From the plugin manager (recommended)
+
+Open **Plugins** in the DSH sidebar → **Add plugin**, then paste:
+
+```text
+@ttxl314/dsh-ds-peak-valley@0.1.2
+```
+
+Drop the `@0.1.2` to take the newest release, or keep it to pin a version. The manager
+resolves the package from the npm registry, installs it into the current profile and
+enables it.
+
+The same operation from a terminal:
+
+```sh
+dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley@0.1.2
+```
+
+Reload the page (or restart DSH) and the badge appears beside the stats line.
+
+### From a local checkout (development)
 
 ```sh
 git clone https://github.com/ttxl314/dsh-ds-peak-valley.git
@@ -44,28 +72,30 @@ git clone https://github.com/ttxl314/dsh-ds-peak-valley.git
 dsh plugin --profile web add link:<path-to-clone>
 ```
 
-Or edit the profile manifest by hand (typically `$DSH_HOME/profiles/web/package.json`):
+The **Add plugin** box in the plugin manager also accepts that absolute path directly, plus
+`npm pack` tarballs (`.tgz`) and Git specs such as
+`https://github.com/ttxl314/dsh-ds-peak-valley#v0.1.2`.
 
-```json
-{
-  "dependencies": {
-    "@ttxl314/dsh-ds-peak-valley": "link:<path-to-clone>"
-  },
-  "dsh": {
-    "profile": {
-      "bundles": [
-        "@deepseek-ai/dsh-base",
-        "@deepseek-ai/dsh-web-app",
-        "@ttxl314/dsh-ds-peak-valley"
-      ]
-    }
-  }
-}
+### Verify
+
+- **Plugins** lists the bundle as enabled, with the row `ds-peak-valley`.
+- The composer dock shows something like `文峰 14:26 · 距下谷 3小时34分` (or `文谷 …`) next to
+  `1 轮 · 68 步 | LLM ...`.
+- `node test/self-test.mjs` inside the package prints `OK — 36 schedule cases`.
+
+### Update
+
+```sh
+dsh plugin --profile web add @ttxl314/dsh-ds-peak-valley@latest
 ```
 
-Restart DSH afterwards; the badge appears in the composer dock next to the stats line.
+### Uninstall
 
-To uninstall, drop the package from `dependencies` and from `dsh.profile.bundles`.
+```sh
+dsh plugin --profile web remove @ttxl314/dsh-ds-peak-valley
+```
+
+On a desktop profile, swap `--profile web` for `--profile desktop` in any command above.
 
 ## Behavior
 
